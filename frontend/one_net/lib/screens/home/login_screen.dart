@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:one_net/core/constants/constants.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  LoginScreenState createState() => LoginScreenState();
+}
+
+class LoginScreenState extends State<LoginScreen> {
+  bool _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -61,20 +68,28 @@ class LoginScreen extends StatelessWidget {
                   hintStyle: hintText(context).copyWith(color: hintColor),
                 ),
               ),
-              SizedBox(height: 12),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: false,
-                        onChanged: (bool? value) {},
-                      ),
-                      Text('Keep me logged in',
-                          style: hintText(context).copyWith(fontSize: 13)),
-                    ],
+                  SizedBox(
+                    width: 30,
+                    child: Checkbox(
+                      value: _isChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _isChecked = value!;
+                        });
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(3))),
+                      side: BorderSide(color: primaryColor, width: 1.5),
+                      activeColor: primaryColor,
+                      checkColor: Colors.white,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                   ),
+                  Text('Keep me logged in',
+                      style: hintText(context).copyWith(fontSize: 13)),
+                  Spacer(),
                   TextButton(
                     onPressed: () {},
                     child: Text('Forgot password?',
@@ -106,6 +121,8 @@ class LoginScreen extends StatelessWidget {
                         style: hintText(context).copyWith(fontSize: 14)),
                     TextButton(
                       onPressed: () {},
+                      style: TextButton.styleFrom(
+                          padding: EdgeInsets.only(left: 4)),
                       child: Text(
                         'Create an account',
                         style:
