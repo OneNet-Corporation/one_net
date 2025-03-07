@@ -12,6 +12,8 @@ class LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool _isChecked = false;
+  bool _isEmailEmpty = false;
+  bool _isPasswordEmpty = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +43,13 @@ class LoginScreenState extends State<LoginScreen> {
                   hintText: 'Enter your email address...',
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: lightGray),
+                    borderSide: BorderSide(
+                        color: _isEmailEmpty ? errorColor : lightGray),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: lightGray),
+                    borderSide: BorderSide(
+                        color: _isEmailEmpty ? errorColor : lightGray),
                   ),
                   hintStyle: hintText(context).copyWith(color: hintColor),
                 ),
@@ -63,11 +67,13 @@ class LoginScreenState extends State<LoginScreen> {
                   hintText: 'Enter password',
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: lightGray),
+                    borderSide: BorderSide(
+                        color: _isPasswordEmpty ? errorColor : lightGray),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: lightGray),
+                    borderSide: BorderSide(
+                        color: _isPasswordEmpty ? errorColor : lightGray),
                   ),
                   hintStyle: hintText(context).copyWith(color: hintColor),
                 ),
@@ -104,7 +110,16 @@ class LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 12),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _isEmailEmpty = emailController.text.isEmpty;
+                    _isPasswordEmpty = passwordController.text.isEmpty;
+                  });
+
+                  if (!_isEmailEmpty && !_isPasswordEmpty) {
+                    // Proceed with login
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(

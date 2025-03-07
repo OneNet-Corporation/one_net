@@ -7,6 +7,7 @@ const defaultBackgroundColor = Colors.white;
 const defaultTextColor = Colors.black;
 const hintColor = Color(0xFF98A2B3);
 const lightGray = Color(0xFFF2F4F7);
+const errorColor = Colors.red;
 
 // TextStyle Constants
 TextStyle bodySmall(BuildContext context) => TextStyle(
