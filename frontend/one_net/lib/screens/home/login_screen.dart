@@ -9,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool _isChecked = false;
 
   @override
@@ -33,6 +35,7 @@ class LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 8),
               TextField(
+                controller: emailController,
                 cursorColor: primaryColor,
                 decoration: InputDecoration(
                   hintText: 'Enter your email address...',
@@ -42,7 +45,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.transparent),
+                    borderSide: BorderSide(color: lightGray),
                   ),
                   hintStyle: hintText(context).copyWith(color: hintColor),
                 ),
@@ -54,6 +57,7 @@ class LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 8),
               TextField(
+                controller: passwordController,
                 cursorColor: primaryColor,
                 decoration: InputDecoration(
                   hintText: 'Enter password',
@@ -63,7 +67,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.transparent),
+                    borderSide: BorderSide(color: lightGray),
                   ),
                   hintStyle: hintText(context).copyWith(color: hintColor),
                 ),
