@@ -140,6 +140,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:one_net/screens/home/login_screen.dart';
+import 'package:one_net/screens/home/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/user_provider.dart';
 import 'screens/home/home_screen.dart';
@@ -165,7 +166,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: const ProfileScreen(),
     );
   }
 }
