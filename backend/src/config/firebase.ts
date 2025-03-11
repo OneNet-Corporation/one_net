@@ -4,7 +4,7 @@ import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import path from 'path';
 import logger from '../utils/logger';
-
+// this is firebase config
 // Load Firebase Admin SDK credentials
 const serviceAccountPath = path.join(__dirname, 'firebase-admin-sdk.json');
 
