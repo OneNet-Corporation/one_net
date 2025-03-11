@@ -1,0 +1,55 @@
+2025-03-07 16:44:57 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:44:57 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:44:57 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:44:57 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:44:58 [[31merror[39m]: 🔥 Firebase Auth Connection Error: There is no configuration corresponding to the provided identifier.
+2025-03-07 16:45:31 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:45:31 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:45:31 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:45:31 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:45:32 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: r27A9WAqN7S0pD0K2z2LgHvKgmI2
+2025-03-07 16:46:04 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:46:04 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:46:04 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:46:04 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:46:05 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: n3RWHzdBjmdKoiXsFZIkib2lGVg2
+2025-03-07 16:46:06 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:46:06 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:46:06 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:46:06 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:46:07 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: SVYmhwlbcAOrYSUAEoilQ8Dld9G2
+2025-03-07 16:46:09 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:46:09 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:46:09 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:46:09 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:46:10 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: 5xzUXmoe5AOstu6IemLJbdsiRt32
+2025-03-07 16:46:11 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:46:11 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:46:11 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:46:11 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:46:12 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: ubh7QsLhIrPbDuSakTwI3FV62iv1
+2025-03-07 16:46:15 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:46:15 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:46:15 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:46:15 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:46:16 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: UkW9L5UG8JhL1m4msp7fWWCF2L02
+2025-03-07 16:46:17 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:46:17 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:46:17 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:46:17 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:46:18 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: SP3bXWHH1Xh0Z0Oh7uGMDDvDlur2
+2025-03-07 16:49:30 [[32minfo[39m]: ✅ This is an INFO log - should be displayed
+2025-03-07 16:49:30 [[33mwarn[39m]: ⚠️ This is a WARNING log
+2025-03-07 16:49:30 [[31merror[39m]: 🔥 This is an ERROR log
+2025-03-07 16:49:30 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:49:31 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: 8kJCiRjhI5VzmqYFMg6xgPSBPwt1
+2025-03-07 16:49:45 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:49:45 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: ncmSkQupi5cpa5zim6EKyeppcfI3
+2025-03-07 16:49:57 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:49:58 [[32minfo[39m]: ✅ Firebase Auth Connection Successful! User: ko1xsLNnWfN2HdrIzBPH9tfyQgG3
+2025-03-07 16:50:06 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:50:07 [[32minfo[39m]: Firebase Auth Connection Successful! User: sOGbG7iwkqfqAEsS4EpyOO0o6B73
+2025-03-07 16:50:11 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:50:12 [[32minfo[39m]: Firebase Auth Connection Successful! User: 8nmChWO1goYaYoDE0GQ2bOHNvgj2
+2025-03-07 16:50:18 [[32minfo[39m]: Firebase Admin Initialized Successfully.
+2025-03-07 16:50:18 [[32minfo[39m]: Firebase Auth Connection Successful! User: szDAa6xh7XUkVc81diGuYaiXVQ62
