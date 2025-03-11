@@ -1,0 +1,2 @@
+C:/Users/NATASHA NMW/one_net/frontend/one_net/android/app/.cxx/RelWithDebInfo/3f1p5an0/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/NATASHA NMW/one_net/frontend/one_net/android/app/.cxx/RelWithDebInfo/3f1p5an0/x86_64/CMakeFiles/rebuild_cache.dir
