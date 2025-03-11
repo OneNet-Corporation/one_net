@@ -1,9 +1,7 @@
-import express from 'express';
-import cors from 'cors';
+import app from "./app";
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`OneNet Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`OneNet Server is running on port ${PORT}`);
+});

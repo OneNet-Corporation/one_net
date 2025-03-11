@@ -4,7 +4,7 @@ import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import path from 'path';
 import logger from '../utils/logger';
-// this is firebase config
+
 // Load Firebase Admin SDK credentials
 const serviceAccountPath = path.join(__dirname, 'firebase-admin-sdk.json');
 
@@ -59,5 +59,10 @@ export const handleAuthError = (
   };
 };
 
+export const usersCollection = db.collection("users");
+export const postsCollection = db.collection("posts");
+export const commentsCollection = (postId: string) => db.collection(`posts/${postId}/comments`);
+export const likesCollection = (postId: string) => db.collection(`posts/${postId}/likes`);
+export const eventsCollection = db.collection("events");
 
 export { admin, db, auth };
