@@ -59,10 +59,4 @@ export const handleAuthError = (
   };
 };
 
-export const usersCollection = db.collection("users");
-export const postsCollection = db.collection("posts");
-export const commentsCollection = (postId: string) => db.collection(`posts/${postId}/comments`);
-export const likesCollection = (postId: string) => db.collection(`posts/${postId}/likes`);
-export const eventsCollection = db.collection("events");
-
 export { admin, db, auth };
