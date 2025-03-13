@@ -102,7 +102,7 @@ class PostCard extends StatelessWidget {
                 GestureDetector(
                   child: SvgPicture.asset(
                       'assets/images/message_circle_icon.svg',
-                      colorFilter: ColorFilter.mode(tagColor, BlendMode.srcIn)),
+                      color: tagColor),
                   onTap: () {},
                 ),
                 SizedBox(width: 4),
@@ -113,8 +113,10 @@ class PostCard extends StatelessWidget {
                 ),
                 SizedBox(width: 16),
                 GestureDetector(
-                  child: SvgPicture.asset('assets/images/repost_icon.svg',
-                      colorFilter: ColorFilter.mode(tagColor, BlendMode.srcIn)),
+                  child: SvgPicture.asset(
+                    'assets/images/repost_icon.svg',
+                    color: tagColor,
+                  ),
                   onTap: () {},
                 ),
                 SizedBox(width: 4),
@@ -137,8 +139,10 @@ class PostCard extends StatelessWidget {
                 ),
                 SizedBox(width: 16),
                 GestureDetector(
-                  child: SvgPicture.asset('assets/images/share_icon.svg',
-                      colorFilter: ColorFilter.mode(tagColor, BlendMode.srcIn)),
+                  child: SvgPicture.asset(
+                    'assets/images/share_icon.svg',
+                    color: tagColor,
+                  ),
                   onTap: () {},
                 ),
                 SizedBox(width: 12),

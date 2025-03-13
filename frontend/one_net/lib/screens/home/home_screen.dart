@@ -11,7 +11,7 @@ import 'package:one_net/screens/common/custom_drawer.dart';
 import 'package:one_net/widgets/homeAppBar.dart';
 import 'storiesCarousel.dart';
 import 'nearbyConnections.dart';
-import 'postCard.dart';
+import '../../core/widgets/cards/post_card_Damian.dart';
 import 'chainSuggestions.dart';
 
 class HomePage extends StatelessWidget {
