@@ -1,6 +1,8 @@
 import { collections } from '../config/firestoreCollections';
 import { User } from '../models/userModel';
 import { Timestamp } from 'firebase-admin/firestore';
+import logger from '../utils/logger';
+import { userSchema } from '../validators/userValidator';
 
 // Fetch user by email
 export const getUserByEmail = async (email: string): Promise<User | null> => {
@@ -8,7 +10,22 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
   return snapshot.empty ? null : (snapshot.docs[0].data() as User);
 };
 
-// Create a new user
+export const getUserById = async (userId: string) => {
+  try {
+    const userDoc = await collections.users.doc(userId).get();
+    if (!userDoc.exists) return null;
+
+    const userData = userDoc.data();
+    if (!userData) return null;
+
+    // Validate & Parse user data using Zod to ensure alignment
+    return userSchema.parse(userData);
+  } catch (error) {
+    logger.error(`Error fetching user by ID: ${userId}`, error);
+    return null;
+  }
+};
+
 export const createUser = async (
   userData: Omit<User, 'createdAt' | 'updatedAt'>
 ): Promise<{ success: boolean; message: string; userId?: string }> => {
@@ -22,12 +39,14 @@ export const createUser = async (
       userId,
       createdAt: now,
       updatedAt: now,
+      isUpdated: false,
+      deletedAt: null,
     };
 
     await userRef.set(newUser);
     return { success: true, message: 'User created successfully', userId };
   } catch (error) {
-    console.error('Error creating user:', error);
+    logger.error('Error creating user:', error);
     return { success: false, message: 'User creation failed' };
   }
 };

@@ -7,14 +7,15 @@ export interface User {
   lastName: string;
   email: string;
   passwordHash: string;
-  avatarUrl?: string;
-  contactNo?: string;
+  avatarUrl?: string | null;
+  contactNo?: string | null;
   gender: string;
-  bio?: string;
+  bio?: string | null;
   followersCount: number;
   followingCount: number;
   totalPosts: number;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+  isUpdated: boolean;
   deletedAt: Timestamp | null;
 }
