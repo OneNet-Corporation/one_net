@@ -15,8 +15,10 @@ class BottomMenuBarProvider extends ChangeNotifier {
     return _pageIndex;
   }
 
-  set setPageIndex(int index) {
-    _pageIndex = index;
-    notifyListeners();
+  void setPageIndex(int index) {
+    if (_pageIndex != index) {
+      _pageIndex = index;
+      notifyListeners();
+    }
   }
 }

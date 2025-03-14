@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/user_provider.dart';
 import 'providers/bottomMenuBar_provider.dart';
+import 'providers/post_provider.dart';
 import 'config/themes/theme.dart';
 import 'config/routes.dart';
 
@@ -14,6 +15,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => BottomMenuBarProvider()),
+        ChangeNotifierProvider(create: (_) => PostProvider()),
       ],
       child: const MyApp(),
     ),

@@ -288,35 +288,39 @@ class ProfileScreen extends StatelessWidget {
                       height: 400, // Height of the TabBarView
                       child: TabBarView(
                         children: [
-                          Flexible(
-                            child: ListView(
-                              children: [
-                                PostCard(
-                                    profileImageUrl:
-                                        'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                    name: 'Zuhran Ahmad',
-                                    location: 'Los Angeles, CA',
-                                    timeAgo: '20h ago',
-                                    content:
-                                        'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
-                                PostCard(
-                                    profileImageUrl:
-                                        'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                    name: 'Zuhran Ahmad',
-                                    location: 'Los Angeles, CA',
-                                    timeAgo: '20h ago',
-                                    content:
-                                        'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
-                                PostCard(
-                                    profileImageUrl:
-                                        'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                    name: 'Zuhran Ahmad',
-                                    location: 'Los Angeles, CA',
-                                    timeAgo: '20h ago',
-                                    content:
-                                        'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
-                              ],
-                            ),
+                          Column(
+                            children: [
+                              Expanded(
+                                child: ListView(
+                                  children: [
+                                    PostCard(
+                                        profileImageUrl:
+                                            'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
+                                        name: 'Zuhran Ahmad',
+                                        location: 'Los Angeles, CA',
+                                        timeAgo: '20h ago',
+                                        content:
+                                            'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
+                                    PostCard(
+                                        profileImageUrl:
+                                            'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
+                                        name: 'Zuhran Ahmad',
+                                        location: 'Los Angeles, CA',
+                                        timeAgo: '20h ago',
+                                        content:
+                                            'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
+                                    PostCard(
+                                        profileImageUrl:
+                                            'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
+                                        name: 'Zuhran Ahmad',
+                                        location: 'Los Angeles, CA',
+                                        timeAgo: '20h ago',
+                                        content:
+                                            'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                           Center(child: Text('Photos Placeholder')),
                           Center(child: Text('Videos Placeholder')),

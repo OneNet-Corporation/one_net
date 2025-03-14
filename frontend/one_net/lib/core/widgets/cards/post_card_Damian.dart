@@ -2,50 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:one_net/config/themes/theme.dart';
+import 'package:one_net/models/post_model.dart';
 import 'package:video_player/video_player.dart';
 
 class PostCard extends StatelessWidget {
-  final String profileImage;
-  final Color avatarBackColor;
-  final String username;
-  final String location;
-  final String timeAgo;
-  final String postText;
-  final String? mediaUrl; 
-  final MediaType mediaType; 
-  final int likes;
-  final int comments;
-  final int shares;
-  final bool isOnline;
+  final Post post; // Accepts a Post object
 
-  const PostCard({
-    super.key,
-    required this.profileImage,
-    required this.avatarBackColor,
-    required this.username,
-    required this.location,
-    required this.timeAgo,
-    required this.postText,
-    this.mediaUrl,
-    this.mediaType = MediaType.none,
-    required this.likes,
-    required this.comments,
-    required this.shares,
-    this.isOnline = false,
-  });
+  const PostCard({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Container(
-            width: double.infinity,
-            height: 1,
-            color: Color(0xFFF4F4F4),
-          ),
-        ),
+        const Divider(color: Color(0xFFF4F4F4), thickness: 1),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Column(
@@ -57,14 +26,14 @@ class PostCard extends StatelessWidget {
                   Stack(
                     children: [
                       CircleAvatar(
-                        backgroundColor: avatarBackColor,
+                        backgroundColor: Color(int.parse(post.avatarBackColor)),
                         radius: 16,
-                        backgroundImage: AssetImage(profileImage),
+                        backgroundImage: AssetImage(post.profileImage),
                       ),
-                      if (isOnline)
+                      if (post.isOnline)
                         Positioned(
-                          bottom: -0.5,
-                          right: -0.5,
+                          bottom: 0,
+                          right: 0,
                           child: Container(
                             width: 10,
                             height: 10,
@@ -83,16 +52,15 @@ class PostCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        username,
+                        post.username,
                         style: const TextStyle(
-                          color: Color(0xFF101828),
                           fontSize: 14,
-                          fontFamily: 'SFProText',
                           fontWeight: FontWeight.w600,
+                          color: Color(0xFF101828),
                         ),
                       ),
                       Text(
-                        "$location • $timeAgo",
+                        "${post.location} • ${post.timeAgo}",
                         style: const TextStyle(
                             fontSize: 12, color: Color(0xFF98A2B3)),
                       ),
@@ -105,62 +73,62 @@ class PostCard extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: const Color(0xFFF4F5FA),
                         backgroundColor: const Color(0xFFF4F5FA),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                       ),
                       child: const Text(
                         "+ Follow",
                         style: TextStyle(
-                          fontFamily: 'SFProText',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.primary,
-                        ),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.primary),
                       ),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 8),
+
               // Post Text
               Padding(
                 padding: const EdgeInsets.only(left: 40),
-                child: Text(
-                  postText,
-                  style: const TextStyle(fontSize: 14, height: 1.5),
-                ),
+                child: Text(post.postText,
+                    style: const TextStyle(fontSize: 14, height: 1.5)),
               ),
               const SizedBox(height: 8),
+
               // Media (Image/Video)
-              if (mediaUrl != null) ...[
+              if (post.mediaUrl != null) ...[
                 Padding(
                   padding: const EdgeInsets.only(left: 40),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: mediaType == MediaType.image
-                        ? Image.asset(mediaUrl!,
+                    child: post.mediaType == MediaType.image
+                        ? Image.asset(post.mediaUrl!,
                             fit: BoxFit.cover, width: double.infinity)
-                        : VideoPlayerWidget(videoUrl: mediaUrl!),
+                        : Image.asset(post.mediaUrl!,
+                            fit: BoxFit.cover, width: double.infinity),
+                    //VideoPlayerWidget(videoUrl: post.mediaUrl!),
                   ),
                 ),
                 const SizedBox(height: 12),
               ],
+
               // Interaction Row (Like, Comment, Share)
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 0),
+                padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildIconText("assets/images/icons/heart.svg", likes),
+                    _buildIconText("assets/images/icons/heart.svg", post.likes),
+                    _buildIconText("assets/images/icons/message-circle-01.svg",
+                        post.comments),
                     _buildIconText(
-                        "assets/images/icons/message-circle-01.svg", comments),
-                    _buildIconText("assets/images/icons/refresh.svg", shares),
+                        "assets/images/icons/refresh.svg", post.shares),
                     _buildIconText("assets/images/icons/bookmark.svg", 0),
                     _buildIconText("assets/images/icons/forward.svg", 0),
                     _buildIconText(
@@ -180,12 +148,8 @@ class PostCard extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: onPressed,
-          child: SvgPicture.asset(
-            iconPath,
-            width: 20,
-            height: 20,
-            color: Colors.grey[700],
-          ),
+          child: SvgPicture.asset(iconPath,
+              width: 20, height: 20, color: Colors.grey[700]),
         ),
         if (count > 0) ...[
           const SizedBox(width: 4),
