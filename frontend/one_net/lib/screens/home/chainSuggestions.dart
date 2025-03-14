@@ -111,17 +111,22 @@ class ChainSuggestions extends StatelessWidget {
               color: Color(0xFF98A2B3),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 7),
           // Follow Button
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              backgroundColor: AppColor.primary,
+              backgroundColor: AppColor.primary, // Button background color
+              foregroundColor: Colors.white, // Text color
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              minimumSize: const Size(0, 32),
+              minimumSize: const Size(90, 24), // Ensures fixed size
+              maximumSize:
+                  const Size(90, 24), // Prevents expansion in release mode
+              tapTargetSize: MaterialTapTargetSize
+                  .shrinkWrap, // Removes extra touch padding
+              elevation: 0, // Prevents unwanted shadows
             ),
             child: const Text(
               "Follow",
