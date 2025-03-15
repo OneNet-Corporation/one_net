@@ -1,18 +1,18 @@
-import 'dart:async';
+// import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:one_net/providers/bottomMenuBar_provider.dart';
 import 'package:one_net/widgets/bottomMenuBar.dart';
-import 'package:one_net/screens/chain/chain_screen.dart';
+import 'package:one_net/screens/chain/chainScreen.dart';
 import 'package:one_net/screens/add_new/add_new_screen.dart';
-import 'package:one_net/screens/community/community_screen.dart';
-import 'package:one_net/screens/profile/profile_screen.dart';
+import 'package:one_net/screens/community/communityScreen.dart';
+import 'package:one_net/screens/home/profileScreen.dart';
 import 'package:one_net/screens/common/custom_drawer.dart';
 import 'package:one_net/widgets/homeAppBar.dart';
-import 'storiesCarousel.dart';
+import '../../core/widgets/cards/storiesCarousel.dart';
 import 'nearbyConnections.dart';
 import 'postCard.dart';
-import 'chainSuggestions.dart';
+import '../../core/widgets/cards/chainSuggestions.dart';
 
 class HomePage extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 3:
         return CommunityScreen(scaffoldKey: _scaffoldKey);
       case 4:
-        return ProfileScreen(scaffoldKey: _scaffoldKey);
+        return ProfileScreen(scaffoldKey: _scaffoldKey, userId: '5XJainUa4xXSU2KD1qi6');
       default:
         return HomePage(
             scaffoldKey: _scaffoldKey,
