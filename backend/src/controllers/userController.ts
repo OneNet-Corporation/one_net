@@ -2,7 +2,9 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import * as userService from '../services/userServices';
 import * as authService from '../services/authService';
+import { userSchema } from '../validators/userValidator';
 import logger from '../utils/logger';
+import { z } from 'zod';
 
 interface AuthenticatedRequest extends Request {
   userId?: string;
@@ -11,7 +13,17 @@ interface AuthenticatedRequest extends Request {
 // Register a new user
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { username, firstName, lastName, email, password, gender } = req.body;
+    const {
+      username,
+      firstName,
+      lastName,
+      email,
+      password,
+      gender,
+      avatarUrl,
+      contactNo,
+      bio,
+    } = req.body;
 
     const existingUser = await userService.getUserByEmail(email);
     if (existingUser) {
@@ -30,9 +42,13 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       email,
       passwordHash: hashedPassword,
       gender,
+      avatarUrl: avatarUrl || null,
+      contactNo: contactNo || null,
+      bio: bio || null,
       followersCount: 0,
       followingCount: 0,
       totalPosts: 0,
+      isUpdated: false,
       deletedAt: null,
     });
 
@@ -45,11 +61,14 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const tokenResult = await authService.saveAccessToken(user.userId!);
     if (!tokenResult) {
       logger.error(`Token generation failed for user ${user.userId}`);
-      res.status(500).json({ message: "Token generation failed" });
+      res.status(500).json({ message: 'Token generation failed' });
       return;
     }
     logger.info(tokenResult.token);
-    res.status(201).json({ message: 'User registered successfully', accessToken:tokenResult.token });
+    res.status(201).json({
+      message: 'User registered successfully',
+      accessToken: tokenResult.token,
+    });
   } catch (error) {
     console.error('Error in register:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -73,14 +92,17 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const  tokenResult = await authService.saveAccessToken(user.userId!);
+    const tokenResult = await authService.saveAccessToken(user.userId!);
     if (!tokenResult) {
       logger.error(`Token generation failed for user ${user.userId}`);
-      res.status(500).json({ message: "Token generation failed" });
+      res.status(500).json({ message: 'Token generation failed' });
       return;
     }
-    logger.info(tokenResult);
-    res.status(200).json({ message: 'User Logged in successfully', accessToken:tokenResult.token });
+    logger.info(tokenResult.token);
+    res.status(200).json({
+      message: 'User Logged in successfully',
+      accessToken: tokenResult.token,
+    });
   } catch (error) {
     console.error('Error in login:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -98,6 +120,25 @@ export const logout = async (
     res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
     console.log('error while logging out', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const profile = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const userId = req.params.id;
+    console.log('user id controller', userId);
+    const user: z.infer<typeof userSchema> | null =
+      await userService.getUserById(userId);
+
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    logger.error('Error fetching user profile:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };

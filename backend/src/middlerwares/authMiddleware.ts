@@ -33,6 +33,14 @@ export const authenticateUser = async (
       return;
     }
 
+    // Ensure Token Belongs to the Requested User
+    if (req.params.id && req.params.id !== decoded.userId) {
+      res
+        .status(403)
+        .json({ message: 'Forbidden: Token does not match user ID' });
+      return;
+    }
+
     req.userId = decoded.userId; // Properly typed userId
     next();
   } catch (error) {
