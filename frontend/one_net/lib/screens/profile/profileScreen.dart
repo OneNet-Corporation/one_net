@@ -296,9 +296,8 @@ class ProfileScreen extends StatelessWidget {
                             child: ListView(
                               children: [
                                 PostCard(
-                                  profileImage:
-                                      "assets/images/users/JohnDoe2.png",
-                                  avatarBackColor: Color(0xFFB9CFD0),
+                                  profileImage: "assets/images/users/user1.png",
+                                  avatarBackColor: Color(0xFFD1DFC3),
                                   username: "Zuhran Ahmad",
                                   location: "Los Angeles, CA",
                                   timeAgo: "20h ago",
@@ -312,9 +311,8 @@ class ProfileScreen extends StatelessWidget {
                                   isUser: true,
                                 ),
                                 PostCard(
-                                  profileImage:
-                                      "assets/images/users/JohnDoe2.png",
-                                  avatarBackColor: Color(0xFFB9CFD0),
+                                  profileImage: "assets/images/users/user1.png",
+                                  avatarBackColor: Color(0xFFD1DFC3),
                                   username: "Zuhran Ahmad",
                                   location: "Los Angeles, CA",
                                   timeAgo: "20h ago",
@@ -328,9 +326,8 @@ class ProfileScreen extends StatelessWidget {
                                   isUser: true,
                                 ),
                                 PostCard(
-                                  profileImage:
-                                      "assets/images/users/JohnDoe2.png",
-                                  avatarBackColor: Color(0xFFB9CFD0),
+                                  profileImage: "assets/images/users/user1.png",
+                                  avatarBackColor: Color(0xFFD1DFC3),
                                   username: "Zuhran Ahmad",
                                   location: "Los Angeles, CA",
                                   timeAgo: "20h ago",
