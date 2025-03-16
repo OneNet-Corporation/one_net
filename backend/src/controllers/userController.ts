@@ -45,11 +45,14 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const tokenResult = await authService.saveAccessToken(user.userId!);
     if (!tokenResult) {
       logger.error(`Token generation failed for user ${user.userId}`);
-      res.status(500).json({ message: "Token generation failed" });
+      res.status(500).json({ message: 'Token generation failed' });
       return;
     }
     logger.info(tokenResult.token);
-    res.status(201).json({ message: 'User registered successfully', accessToken:tokenResult.token });
+    res.status(201).json({
+      message: 'User registered successfully',
+      accessToken: tokenResult.token,
+    });
   } catch (error) {
     console.error('Error in register:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -73,14 +76,17 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const  tokenResult = await authService.saveAccessToken(user.userId!);
+    const tokenResult = await authService.saveAccessToken(user.userId!);
     if (!tokenResult) {
       logger.error(`Token generation failed for user ${user.userId}`);
-      res.status(500).json({ message: "Token generation failed" });
+      res.status(500).json({ message: 'Token generation failed' });
       return;
     }
     logger.info(tokenResult);
-    res.status(200).json({ message: 'User Logged in successfully', accessToken:tokenResult.token });
+    res.status(200).json({
+      message: 'User Logged in successfully',
+      accessToken: tokenResult.token,
+    });
   } catch (error) {
     console.error('Error in login:', error);
     res.status(500).json({ message: 'Internal server error' });

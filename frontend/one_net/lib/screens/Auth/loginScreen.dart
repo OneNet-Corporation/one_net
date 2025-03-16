@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:one_net/core/constants/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,6 +16,43 @@ class LoginScreenState extends State<LoginScreen> {
   bool _isChecked = false;
   bool _isEmailEmpty = false;
   bool _isPasswordEmpty = false;
+
+  Future<void> _signIn() async {
+    setState(() {
+      _isEmailEmpty = emailController.text.isEmpty;
+      _isPasswordEmpty = passwordController.text.isEmpty;
+    });
+
+    if (!_isEmailEmpty && !_isPasswordEmpty) {
+      final response = await http.post(
+        Uri.parse('http://localhost:3000/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'email': emailController.text,
+          'password': passwordController.text,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // If the server returns a 200 CREATED response,
+        // navigate to the home screen
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/HomeScreen',
+          (Route<dynamic> route) => false,
+        );
+      } else {
+        // If the server did not return a 201 CREATED response,
+        // show an error message
+        final responseJson = jsonDecode(response.body);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(responseJson['message'])),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,14 +150,7 @@ class LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    _isEmailEmpty = emailController.text.isEmpty;
-                    _isPasswordEmpty = passwordController.text.isEmpty;
-                  });
-
-                  if (!_isEmailEmpty && !_isPasswordEmpty) {
-                    // Proceed with login
-                  }
+                  _signIn();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
@@ -139,7 +171,13 @@ class LoginScreenState extends State<LoginScreen> {
                     Text("Don't have an account?",
                         style: hintText(context).copyWith(fontSize: 14)),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/SignUp',
+                          (Route<dynamic> route) => false,
+                        );
+                      },
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.only(left: 4)),
                       child: Text(

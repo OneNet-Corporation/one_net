@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:one_net/screens/profile/profileScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:one_net/providers/bottomMenuBar_provider.dart';
 import 'package:one_net/widgets/bottomMenuBar.dart';
-import 'package:one_net/screens/chain/chain_screen.dart';
+import 'package:one_net/screens/chain/chainScreen.dart';
 import 'package:one_net/screens/add_new/add_new_screen.dart';
 import 'package:one_net/screens/community/community_screen.dart';
-import 'package:one_net/screens/profile/profile_screen.dart';
 import 'package:one_net/screens/common/custom_drawer.dart';
 import 'package:one_net/widgets/homeAppBar.dart';
-import 'storiesCarousel.dart';
+import '../../core/widgets/cards/storiesCarousel.dart';
 import 'nearbyConnections.dart';
-import 'postCard.dart';
-import 'chainSuggestions.dart';
+import '../../core/widgets/cards/postCard.dart';
+import '../../core/widgets/cards/chainSuggestions.dart';
 
 class HomePage extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -52,6 +52,7 @@ class HomePage extends StatelessWidget {
                     comments: 10000,
                     shares: 122,
                     isOnline: true,
+                    isUser: false,
                   ),
                   ChainSuggestions(
                     users: [
@@ -94,6 +95,7 @@ class HomePage extends StatelessWidget {
                     comments: 10000,
                     shares: 122,
                     isOnline: true,
+                    isUser: false,
                   ),
                   PostCard(
                     profileImage: "assets/images/users/alisha.png",
@@ -109,6 +111,7 @@ class HomePage extends StatelessWidget {
                     comments: 10000,
                     shares: 122,
                     isOnline: true,
+                    isUser: false,
                   ),
                 ],
               ),
