@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:one_net/core/constants/constants.dart';
-import 'package:one_net/core/widgets/cards/post_card.dart';
+import 'package:one_net/core/widgets/cards/postCard.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, required this.scaffoldKey});
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -294,29 +296,50 @@ class ProfileScreen extends StatelessWidget {
                             child: ListView(
                               children: [
                                 PostCard(
-                                    profileImageUrl:
-                                        'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                    name: 'Zuhran Ahmad',
-                                    location: 'Los Angeles, CA',
-                                    timeAgo: '20h ago',
-                                    content:
-                                        'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
+                                  profileImage: "assets/images/users/user1.png",
+                                  avatarBackColor: Color(0xFFD1DFC3),
+                                  username: "Zuhran Ahmad",
+                                  location: "Los Angeles, CA",
+                                  timeAgo: "20h ago",
+                                  postText:
+                                      "Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!",
+                                  mediaType: MediaType.none,
+                                  likes: 12000,
+                                  comments: 10000,
+                                  shares: 122,
+                                  isOnline: true,
+                                  isUser: true,
+                                ),
                                 PostCard(
-                                    profileImageUrl:
-                                        'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                    name: 'Zuhran Ahmad',
-                                    location: 'Los Angeles, CA',
-                                    timeAgo: '20h ago',
-                                    content:
-                                        'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
+                                  profileImage: "assets/images/users/user1.png",
+                                  avatarBackColor: Color(0xFFD1DFC3),
+                                  username: "Zuhran Ahmad",
+                                  location: "Los Angeles, CA",
+                                  timeAgo: "20h ago",
+                                  postText:
+                                      "Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!",
+                                  mediaType: MediaType.none,
+                                  likes: 12000,
+                                  comments: 10000,
+                                  shares: 122,
+                                  isOnline: true,
+                                  isUser: true,
+                                ),
                                 PostCard(
-                                    profileImageUrl:
-                                        'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                    name: 'Zuhran Ahmad',
-                                    location: 'Los Angeles, CA',
-                                    timeAgo: '20h ago',
-                                    content:
-                                        'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
+                                  profileImage: "assets/images/users/user1.png",
+                                  avatarBackColor: Color(0xFFD1DFC3),
+                                  username: "Zuhran Ahmad",
+                                  location: "Los Angeles, CA",
+                                  timeAgo: "20h ago",
+                                  postText:
+                                      "Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!",
+                                  mediaType: MediaType.none,
+                                  likes: 12000,
+                                  comments: 10000,
+                                  shares: 122,
+                                  isOnline: true,
+                                  isUser: true,
+                                ),
                               ],
                             ),
                           ),

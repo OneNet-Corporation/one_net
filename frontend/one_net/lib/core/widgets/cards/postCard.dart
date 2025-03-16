@@ -11,12 +11,13 @@ class PostCard extends StatelessWidget {
   final String location;
   final String timeAgo;
   final String postText;
-  final String? mediaUrl; 
-  final MediaType mediaType; 
+  final String? mediaUrl;
+  final MediaType mediaType;
   final int likes;
   final int comments;
   final int shares;
   final bool isOnline;
+  final bool isUser;
 
   const PostCard({
     super.key,
@@ -32,6 +33,7 @@ class PostCard extends StatelessWidget {
     required this.comments,
     required this.shares,
     this.isOnline = false,
+    required this.isUser,
   });
 
   @override
@@ -100,31 +102,32 @@ class PostCard extends StatelessWidget {
                   ),
                   const Spacer(),
                   // Follow Button
-                  SizedBox(
-                    height: 29,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: const Color(0xFFF4F5FA),
-                        backgroundColor: const Color(0xFFF4F5FA),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                  if (!isUser)
+                    SizedBox(
+                      height: 29,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: const Color(0xFFF4F5FA),
+                          backgroundColor: const Color(0xFFF4F5FA),
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 0),
                         ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 0),
-                      ),
-                      child: const Text(
-                        "+ Follow",
-                        style: TextStyle(
-                          fontFamily: 'SFProText',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.primary,
+                        child: const Text(
+                          "+ Follow",
+                          style: TextStyle(
+                            fontFamily: 'SFProText',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.primary,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                 ],
               ),
               const SizedBox(height: 8),
