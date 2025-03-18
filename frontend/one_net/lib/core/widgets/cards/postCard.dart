@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:one_net/config/themes/theme.dart';
-import 'package:one_net/models/post_model.dart';
+import 'package:one_net/models/postModel.dart';
 import 'package:video_player/video_player.dart';
 
 class PostCard extends StatelessWidget {

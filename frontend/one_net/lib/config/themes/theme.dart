@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-part 'app_icons.dart';
+part 'appIcons.dart';
 part 'color.dart';
-part 'text_styles.dart';
+part 'textStyles.dart';
 
 class AppTheme {
   static final ThemeData appTheme = ThemeData.light().copyWith(
