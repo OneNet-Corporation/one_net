@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:one_net/screens/Auth/forgetPassword_screen.dart'; 
 import 'package:one_net/screens/Auth/signin.dart'; 
 import 'package:one_net/screens/Auth/signup.dart'; 
-import 'package:one_net/screens/common/splash.dart';
+import 'package:one_net/core/widgets/cards/splash.dart';
 
 class Routes {
   static dynamic route() {

@@ -7,7 +7,7 @@ import 'package:one_net/screens/chain/chainScreen.dart';
 import 'package:one_net/screens/add_new/add_new_screen.dart';
 import 'package:one_net/screens/community/communityScreen.dart';
 import 'package:one_net/screens/home/profileScreen.dart';
-import 'package:one_net/screens/common/custom_drawer.dart';
+import 'package:one_net/core/widgets/cards/custom_drawer.dart';
 import 'package:one_net/widgets/homeAppBar.dart';
 import '../../core/widgets/cards/storiesCarousel.dart';
 import 'nearbyConnections.dart';
@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 3:
         return CommunityScreen(scaffoldKey: _scaffoldKey);
       case 4:
-        return ProfileScreen(scaffoldKey: _scaffoldKey, userId: '5XJainUa4xXSU2KD1qi6');
+        return ProfileScreen(scaffoldKey: _scaffoldKey, userId: 'IHuZPsydFaOYmnbnf58m');
       default:
         return HomePage(
             scaffoldKey: _scaffoldKey,
