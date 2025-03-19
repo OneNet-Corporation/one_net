@@ -63,6 +63,11 @@ export const getUserAccessToken = async (
   }
 };
 
+// Get User ID from Request
+export const getUserId = (req: { userId: string }): string => {
+  return req.userId; // req.userId is set in authMiddleware
+};
+
 // Remove Access Token (Logout)
 export const removeAccessToken = async (userId: string): Promise<void> => {
   try {

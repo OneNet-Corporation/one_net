@@ -93,6 +93,40 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+// Refresh Token
+export const refreshToken = async (
+  req: AuthenticatedRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const userId = req.userId;
+    const tokenResult = await authService.saveAccessToken(userId!);
+    if (!tokenResult) {
+      logger.error(`Token generation failed for user ${userId}`);
+      res.status(500).json({ message: 'Token generation failed' });
+      return;
+    }
+    res.status(200).json({ accessToken: tokenResult.token });
+  } catch (error) {
+    console.error('Error in refreshToken:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+// Testing route for refreshToken
+export const testRefreshToken = async (
+  req: AuthenticatedRequest,
+  res: Response 
+): Promise<void> => {
+  try {
+    const userId = req.userId;  
+    res.status(200).json({ message: 'Refresh token successfully', userId });
+  } catch (error) {
+    logger.error('Error in testRefreshToken:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 // Logout User (Invalidate Token)
 export const logout = async (
   req: AuthenticatedRequest,
