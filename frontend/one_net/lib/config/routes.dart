@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:one_net/screens/Auth/forgetPassword_screen.dart';
+import 'package:one_net/screens/Auth/forgetPasswordScreen.dart';
 import 'package:one_net/screens/Auth/loginScreen.dart';
 import 'package:one_net/screens/Auth/signupScreen.dart';
 import 'package:one_net/screens/common/splash.dart';
@@ -31,10 +31,6 @@ class Routes {
       case "ForgetPasswordPage":
         return MaterialPageRoute(
             builder: (BuildContext context) => const ForgetPasswordScreen());
-      case "HomeScreen":
-        return MaterialPageRoute(
-            builder: (BuildContext context) => const HomeScreen());
-
       default:
         return onUnknownRoute(const RouteSettings(name: '/Feature'));
     }

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:one_net/config/themes/theme.dart';
@@ -12,7 +10,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      scrolledUnderElevation: 0,
+      scrolledUnderElevation: 0, // Prevents color change on scroll
       title: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 9),
         child: Row(
@@ -26,27 +24,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 20,
               ),
             ),
-
             // Notification & Search Icons
             Row(
               children: [
-                _buildIconWithBadge("assets/images/icons/bell-02.svg", 12,
-                    onPressed: () {
-                  // onPressed callback code here
-                }), // Notification icon
+                _buildIconWithBadge("assets/images/icons/bell-02.svg", 12),
                 const SizedBox(width: 8),
                 _buildIconWithBadge(
-                    "assets/images/icons/message-dots-circle.svg", 12,
-                    onPressed: () {
-                  // onPressed callback code here
-                }), // Message icon
+                    "assets/images/icons/message-dots-circle.svg", 12),
                 const SizedBox(width: 8),
-                _buildIcon(
-                  "assets/images/icons/search-lg.svg",
-                  onPressed: () {
-                    // onPressed callback code here
-                  },
-                ), // Search icon
+                _buildIcon("assets/images/icons/search-lg.svg"),
               ],
             ),
           ],
@@ -97,19 +83,31 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _buildIcon(String iconPath, {VoidCallback? onPressed}) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColor.appBarIconBack,
-        shape: BoxShape.circle,
-      ),
-      child: IconButton(
-        padding: EdgeInsets.zero,
-        icon: SvgPicture.asset(
-          iconPath,
-          width: 22,
-          height: 22,
+    return SizedBox(
+      width: 40, // Forces exact size in all modes
+      height: 40,
+      child: Material(
+        color: Colors.transparent, // Keeps ripple effect visible
+        child: InkWell(
+          borderRadius:
+              BorderRadius.circular(20), // Ensures proper touch behavior
+          onTap: onPressed,
+          child: Container(
+            width: 40, // Ensures fixed size
+            height: 40,
+            decoration: BoxDecoration(
+              color: AppColor.appBarIconBack, // Background color
+              shape: BoxShape.circle, // Circular background
+            ),
+            child: Center(
+              child: SvgPicture.asset(
+                iconPath,
+                width: 22, // Ensures icon size stays correct
+                height: 22,
+              ),
+            ),
+          ),
         ),
-        onPressed: onPressed,
       ),
     );
   }

@@ -18,16 +18,25 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      bool isLoggedIn = false; // Replace with actual login check logic
+      bool isLoggedIn =
+          checkLoginStatus(); // Replace with actual login check logic
       Navigator.pushReplacement(
-        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              isLoggedIn ? const HomeScreen() : const LoginScreen(),
+          builder: (context) => isLoggedIn
+              ? HomePage(
+                  scaffoldKey: GlobalKey<ScaffoldState>(),
+                  refreshIndicatorKey: GlobalKey<RefreshIndicatorState>(),
+                )
+              : LoginScreen(),
         ),
       );
     });
+  }
+
+  bool checkLoginStatus() {
+    // Replace with actual login check logic
+    return false;
   }
 
   @override
