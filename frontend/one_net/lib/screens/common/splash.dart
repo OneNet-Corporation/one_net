@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../home/home_screen.dart';  
+import '../home/homeScreen.dart';
 import '../Auth/signin.dart';
-import '../../config/themes/theme.dart';  
+import '../../config/themes/theme.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -23,7 +23,8 @@ class _SplashPageState extends State<SplashPage> {
         // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
-          builder: (context) => isLoggedIn ? const HomeScreen() : const SignIn(),
+          builder: (context) =>
+              isLoggedIn ? const HomeScreen() : const SignIn(),
         ),
       );
     });

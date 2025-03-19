@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:one_net/screens/Auth/forgetPassword_screen.dart'; 
-import 'package:one_net/screens/Auth/signin.dart'; 
-import 'package:one_net/screens/Auth/signup.dart'; 
+import 'package:one_net/screens/Auth/forgetPasswordScreen.dart';
+import 'package:one_net/screens/Auth/signin.dart';
+import 'package:one_net/screens/Auth/signup.dart';
 import 'package:one_net/screens/common/splash.dart';
 
 class Routes {
@@ -27,8 +27,8 @@ class Routes {
         return MaterialPageRoute(builder: (BuildContext context) => SignUp());
       case "ForgetPasswordPage":
         return MaterialPageRoute(
-        builder: (BuildContext context) => const ForgetPasswordScreen());
-      
+            builder: (BuildContext context) => const ForgetPasswordScreen());
+
       default:
         return onUnknownRoute(const RouteSettings(name: '/Feature'));
     }
