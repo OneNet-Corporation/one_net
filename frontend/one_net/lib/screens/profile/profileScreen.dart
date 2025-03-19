@@ -3,11 +3,57 @@ import 'package:flutter_svg/svg.dart';
 import 'package:one_net/core/constants/constants.dart';
 import 'package:one_net/core/widgets/cards/postCard.dart' hide MediaType;
 import 'package:one_net/models/post.dart';
+import 'package:one_net/models/userModel.dart';
+import 'package:one_net/services/profileService.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key, required this.scaffoldKey});
+class ProfileScreen extends StatefulWidget {
+    final String userId; // Fetch user dynamically based on ID
 
-  final GlobalKey<ScaffoldState> scaffoldKey;
+    const ProfileScreen({super.key, required this.userId, required GlobalKey<ScaffoldState> scaffoldKey});
+
+    @override
+    _ProfileScreenState createState() => _ProfileScreenState();
+  }
+
+  class _ProfileScreenState extends State<ProfileScreen> {
+    UserModel? user;
+    bool isLoading = true;
+    String? errorMessage;
+
+    @override
+    void initState() {
+      super.initState();
+      _fetchUserProfile();
+    }
+
+Future<void> _fetchUserProfile() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+
+    try {
+      // Replace this with your actual JWT token stored in secure storage
+      // ignore: dead_code
+      String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJJSHVaUHN5ZEZhT1ltbmJuZjU4bSIsImV4cCI6MTc0MjA5NDE5OCwiaWF0IjoxNzQyMDgzMzk4fQ.-0dY0YL6r0Qrw5_p04CdQlCyjx7lw08WwVirYfA7eCU";
+      
+      final fetchedUser = await ProfileService.getUserProfile(widget.userId, token);
+      
+      print("Fetched User Data: $fetchedUser");
+
+      setState(() {
+        user = fetchedUser;
+        isLoading = false;
+      });
+    } catch (e) {
+      print("Error Fetching User: $e"); // Console log error
+      setState(() {
+        errorMessage = 'Failed to load profile data. Pull to refresh.';
+        isLoading = false;
+      });
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {

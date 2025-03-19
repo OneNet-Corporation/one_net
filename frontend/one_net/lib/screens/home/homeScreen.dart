@@ -159,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ProfileScreen(
                 key: const ValueKey("ProfileScreen"),
                 scaffoldKey: _scaffoldKey,
+                userId: "",
               ),
             ],
           );
