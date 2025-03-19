@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CommunityScreen extends StatefulWidget {
-  const CommunityScreen({super.key,  required this.scaffoldKey});
+  const CommunityScreen({super.key, required this.scaffoldKey});
 
   final GlobalKey<ScaffoldState> scaffoldKey;
-  
+
   @override
   State<StatefulWidget> createState() => _CommunityScreenState();
 }

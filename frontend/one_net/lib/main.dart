@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 // import 'package:one_net/screens/home/login_screen.dart';
 // import 'package:one_net/screens/home/profile_screen.dart';
 import 'package:provider/provider.dart';
-import 'providers/user_provider.dart';
-import 'providers/bottomMenuBar_provider.dart';
+import 'providers/userProvider.dart';
+import 'providers/bottomMenuBarProvider.dart';
+import 'providers/postProvider.dart';
 import 'config/themes/theme.dart';
 import 'config/routes.dart';
 
@@ -14,6 +15,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => BottomMenuBarProvider()),
+        ChangeNotifierProvider(create: (_) => PostProvider()),
       ],
       child: const MyApp(),
     ),
