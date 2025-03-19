@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:one_net/models/post_model.dart';
+import 'package:one_net/models/post.dart';
 
 class PostService {
   static const String apiUrl =

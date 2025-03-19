@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:one_net/screens/Auth/forgetPassword_screen.dart'; 
-import 'package:one_net/screens/Auth/signin.dart'; 
-import 'package:one_net/screens/Auth/signup.dart'; 
+import 'package:one_net/screens/Auth/forgetPasswordScreen.dart';
+import 'package:one_net/screens/Auth/loginScreen.dart';
+import 'package:one_net/screens/Auth/signupScreen.dart';
 import 'package:one_net/screens/common/splash.dart';
+import 'package:one_net/screens/home/homeScreen.dart';
 
 class Routes {
   static dynamic route() {
@@ -22,13 +23,14 @@ class Routes {
     }
     switch (pathElements[1]) {
       case "SignIn":
-        return MaterialPageRoute(builder: (BuildContext context) => SignIn());
+        return MaterialPageRoute(
+            builder: (BuildContext context) => LoginScreen());
       case "SignUp":
-        return MaterialPageRoute(builder: (BuildContext context) => SignUp());
+        return MaterialPageRoute(
+            builder: (BuildContext context) => SignUpScreen());
       case "ForgetPasswordPage":
         return MaterialPageRoute(
-        builder: (BuildContext context) => const ForgetPasswordScreen());
-      
+            builder: (BuildContext context) => const ForgetPasswordScreen());
       default:
         return onUnknownRoute(const RouteSettings(name: '/Feature'));
     }

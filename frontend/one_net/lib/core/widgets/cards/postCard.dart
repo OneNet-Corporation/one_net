@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:one_net/config/themes/theme.dart';
-import 'package:one_net/models/post_model.dart';
+import 'package:one_net/models/post.dart';
 import 'package:video_player/video_player.dart';
 
 class PostCard extends StatelessWidget {
-  final Post post; // Accepts a Post object
+  final Post post;
 
   const PostCard({super.key, required this.post});
 
@@ -88,7 +88,7 @@ class PostCard extends StatelessWidget {
                             color: AppColor.primary),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 8),

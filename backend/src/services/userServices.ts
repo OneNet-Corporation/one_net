@@ -1,46 +1,33 @@
-import { usersCollection } from "../config/firebase";
-import { User } from "../models/userModel";
-import { Timestamp } from "firebase-admin/firestore";
+import { collections } from '../config/firestoreCollections';
+import { User } from '../models/userModel';
+import { Timestamp } from 'firebase-admin/firestore';
 
-// Create User
-export const createUser = async (userData: User) => {
-  try {
-    const userRef = usersCollection.doc(userData.userId);
-    userData.createdAt = Timestamp.now();
-    userData.updatedAt = Timestamp.now();
-    await userRef.set(userData);
-    return { success: true, message: "User created successfully" };
-  } catch (error) {
-    console.error("Error creating user:", error);
-    return { success: false, message: "User creation failed" };
-  }
+// Fetch user by email
+export const getUserByEmail = async (email: string): Promise<User | null> => {
+  const snapshot = await collections.users.where('email', '==', email).get();
+  return snapshot.empty ? null : (snapshot.docs[0].data() as User);
 };
 
-// Get User by ID
-export const getUserById = async (userId: string) => {
-  const userDoc = await usersCollection.doc(userId).get();
-  return userDoc.exists ? userDoc.data() : null;
-};
-
-// Update User
-export const updateUser = async (userId: string, updateData: Partial<User>) => {
+// Create a new user
+export const createUser = async (
+  userData: Omit<User, 'createdAt' | 'updatedAt'>
+): Promise<{ success: boolean; message: string; userId?: string }> => {
   try {
-    updateData.updatedAt = Timestamp.now();
-    await usersCollection.doc(userId).update(updateData);
-    return { success: true, message: "User updated successfully" };
-  } catch (error) {
-    console.error("Error updating user:", error);
-    return { success: false, message: "User update failed" };
-  }
-};
+    const userRef = collections.users.doc();
+    const userId = userRef.id;
+    const now = Timestamp.now();
 
-// Delete User (Soft Delete)
-export const deleteUser = async (userId: string) => {
-  try {
-    await usersCollection.doc(userId).update({ deletedAt: Timestamp.now() });
-    return { success: true, message: "User deleted successfully" };
+    const newUser: User = {
+      ...userData,
+      userId,
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    await userRef.set(newUser);
+    return { success: true, message: 'User created successfully', userId };
   } catch (error) {
-    console.error("Error deleting user:", error);
-    return { success: false, message: "User deletion failed" };
+    console.error('Error creating user:', error);
+    return { success: false, message: 'User creation failed' };
   }
 };

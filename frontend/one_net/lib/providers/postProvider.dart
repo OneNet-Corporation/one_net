@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:one_net/models/post_model.dart';
-import 'package:one_net/services/post_service.dart';
+import 'package:one_net/models/post.dart';
+import 'package:one_net/services/postService.dart';
 
 class PostProvider with ChangeNotifier {
   final PostService _postService = PostService();

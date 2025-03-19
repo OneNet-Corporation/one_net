@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:one_net/core/constants/constants.dart';
-import 'package:one_net/core/widgets/cards/post_card.dart';
+import 'package:one_net/core/widgets/cards/postCard.dart' hide MediaType;
+import 'package:one_net/models/post.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.scaffoldKey});
@@ -92,7 +93,8 @@ class ProfileScreen extends StatelessWidget {
                                       padding: const EdgeInsets.all(4.0),
                                       child: SvgPicture.asset(
                                         'assets/images/user_edit_icon.svg',
-                                        color: defaultTextColor,
+                                        colorFilter: const ColorFilter.mode(
+                                            defaultTextColor, BlendMode.srcIn),
                                         height: 15,
                                       ),
                                     ),
@@ -150,7 +152,8 @@ class ProfileScreen extends StatelessWidget {
                         SvgPicture.asset(
                           'assets/images/marker_pin_icon.svg',
                           height: 18,
-                          color: primaryColor,
+                          colorFilter:
+                              ColorFilter.mode(primaryColor, BlendMode.srcIn),
                         ),
                         SizedBox(
                           width: 8,
@@ -166,7 +169,8 @@ class ProfileScreen extends StatelessWidget {
                         SvgPicture.asset(
                           'assets/images/globe_icon.svg',
                           height: 18,
-                          color: primaryColor,
+                          colorFilter:
+                              ColorFilter.mode(primaryColor, BlendMode.srcIn),
                         ),
                         SizedBox(
                           width: 8,
@@ -249,7 +253,8 @@ class ProfileScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(4.0),
                               child: SvgPicture.asset(
                                 'assets/images/blockchain_icon.svg',
-                                color: defaultTextColor,
+                                colorFilter: const ColorFilter.mode(
+                                    defaultTextColor, BlendMode.srcIn),
                                 height: 15,
                               ),
                             ),
@@ -288,39 +293,62 @@ class ProfileScreen extends StatelessWidget {
                       height: 400, // Height of the TabBarView
                       child: TabBarView(
                         children: [
-                          Column(
-                            children: [
-                              Expanded(
-                                child: ListView(
-                                  children: [
-                                    PostCard(
-                                        profileImageUrl:
-                                            'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                        name: 'Zuhran Ahmad',
-                                        location: 'Los Angeles, CA',
-                                        timeAgo: '20h ago',
-                                        content:
-                                            'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
-                                    PostCard(
-                                        profileImageUrl:
-                                            'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                        name: 'Zuhran Ahmad',
-                                        location: 'Los Angeles, CA',
-                                        timeAgo: '20h ago',
-                                        content:
-                                            'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
-                                    PostCard(
-                                        profileImageUrl:
-                                            'https://outgrid.uicore.co/creative-agency/wp-content/uploads/sites/22/2023/08/Creative-Agency-About-Team-Image-1.webp',
-                                        name: 'Zuhran Ahmad',
-                                        location: 'Los Angeles, CA',
-                                        timeAgo: '20h ago',
-                                        content:
-                                            'Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!'),
-                                  ],
+                          Flexible(
+                            child: ListView(
+                              children: [
+                                PostCard(
+                                  post: Post(
+                                    profileImage:
+                                        "assets/images/users/user1.png",
+                                    avatarBackColor: "0xFFD1DFC3",
+                                    username: "Zuhran Ahmad",
+                                    location: "Los Angeles, CA",
+                                    timeAgo: "20h ago",
+                                    postText:
+                                        "Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!",
+                                    mediaType: MediaType.none,
+                                    likes: 12000,
+                                    comments: 10000,
+                                    shares: 122,
+                                    isOnline: true,
+                                  ),
                                 ),
-                              ),
-                            ],
+                                PostCard(
+                                  post: Post(
+                                    profileImage:
+                                        "assets/images/users/user1.png",
+                                    avatarBackColor: "0xFFD1DFC3",
+                                    username: "Zuhran Ahmad",
+                                    location: "Los Angeles, CA",
+                                    timeAgo: "20h ago",
+                                    postText:
+                                        "Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!",
+                                    mediaType: MediaType.none,
+                                    likes: 12000,
+                                    comments: 10000,
+                                    shares: 122,
+                                    isOnline: true,
+                                  ),
+                                ),
+                                PostCard(
+                                  post: Post(
+                                    profileImage:
+                                        "assets/images/users/user1.png",
+                                    avatarBackColor: "0xFFD1DFC3",
+                                    username: "Zuhran Ahmad",
+                                    location: "Los Angeles, CA",
+                                    timeAgo: "20h ago",
+                                    postText:
+                                        "Lorem ipsum dolor sit amet. Ut molestiaetio in dignissimos et iste dicta aut dolores veniam At one maxime fugiat. Ut internos toquiered consequatur in omnis of esse sed tempore odit ut optio enim!",
+                                    mediaType: MediaType.none,
+                                    likes: 12000,
+                                    comments: 10000,
+                                    shares: 122,
+                                    isOnline: true,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Center(child: Text('Photos Placeholder')),
                           Center(child: Text('Videos Placeholder')),

@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../home/home_screen.dart';  
-import '../Auth/signin.dart';
-import '../../config/themes/theme.dart';  
+import '../home/homePage.dart';
+import '../Auth/loginScreen.dart';
+import '../../config/themes/theme.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -18,15 +18,25 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      bool isLoggedIn = true; // Replace with actual login check logic
+      bool isLoggedIn =
+          checkLoginStatus(); // Replace with actual login check logic
       Navigator.pushReplacement(
-        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
-          builder: (context) => isLoggedIn ? const HomeScreen() : const SignIn(),
+          builder: (context) => isLoggedIn
+              ? HomePage(
+                  scaffoldKey: GlobalKey<ScaffoldState>(),
+                  refreshIndicatorKey: GlobalKey<RefreshIndicatorState>(),
+                )
+              : LoginScreen(),
         ),
       );
     });
+  }
+
+  bool checkLoginStatus() {
+    // Replace with actual login check logic
+    return false;
   }
 
   @override
