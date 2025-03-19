@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../home/homePage.dart';
+import '../home/homeScreen.dart';
 import '../Auth/loginScreen.dart';
 import '../../config/themes/theme.dart';
 
